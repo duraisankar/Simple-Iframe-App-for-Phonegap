@@ -2,27 +2,14 @@
 <head>
 <title>internals</title>
 <script>
-var internet;
-document.addEventListener('online',online,false);
-document.addEventListener('offline',offline,false);
+var networkState = navigator.connection.type;
+    if (networkState == Connection.NONE){
+                alert('No Internet');
 
+    }else{
 
-function online(){
-
-  internet=true;
-}
-
-function offline(){
- internet=false;
-}
-
-if(internet){
-
- prompt('connected'); 
-}else{
- alert('This application requires internet. Please connect to the internet.');
-
-}
+                   alert('Internet Connection there');
+                }
 
 </script>
 
@@ -30,7 +17,7 @@ if(internet){
 
 <body>
 
-<iframe src="http://phpdemo.16mb.com/inter.html" style="width:100%; height:100%;">
+<iframe src="http://phpdemo.16mb.com/inter.html" style="width:100%; height:100%;"/>
 
 </body>
 
