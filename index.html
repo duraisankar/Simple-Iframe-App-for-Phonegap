@@ -4,22 +4,36 @@
         <title>Test Layout</title>
         <script type="text/javascript" charset="utf-8">
             
-            document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() {
-    document.addEventListener("backbutton", onBackKeyDown, false); //Listen to the User clicking on the back button
+          document.addEventListener("offline", onOffline, false);
+            
+            document.addEventListener("online", onOnline, false);
+
+function onOnline() {
+    console.log("connection");
+    alert("connected");
 }
-function onBackKeyDown(e) {
-    e.preventDefault();
-    navigator.notification.confirm("Are you sure you want to exit ?", onConfirm, "Confirmation", "Yes,No"); 
-    // Prompt the user with the choice
+            function onOffline() {
+    // Handle the offline event
+    console.log("lost connection");
+                alert("lost connection"):
 }
-function onConfirm(button) {
-    if(button==2){//If User selected No, then we just do nothing
-        return;
-    }else{
-        navigator.app.exitApp();// Otherwise we quit the app.
-    }
+            function checkConnection() {
+    var networkState = navigator.connection.type;
+
+    var states = {};
+    states[Connection.UNKNOWN]  = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI]     = 'WiFi connection';
+    states[Connection.CELL_2G]  = 'Cell 2G connection';
+    states[Connection.CELL_3G]  = 'Cell 3G connection';
+    states[Connection.CELL_4G]  = 'Cell 4G connection';
+    states[Connection.CELL]     = 'Cell generic connection';
+    states[Connection.NONE]     = 'No network connection';
+
+    alert('Connection type: ' + states[networkState]);
 }
+
+checkConnection();
         </script>
         <style type="text/css">
             body, html
