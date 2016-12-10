@@ -1,44 +1,40 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>Test Layout</title>
-        <script type="text/javascript" charset="utf-8">
-            
-           document.addEventListener("backbutton", onBackKeyDown, false);//hijack the backbutton
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Notification Example</title>
 
-        function onBackKeyDown(e){
-            var page = $.mobile.activePage.attr('id');
-            xStat.rec("back button clicked from page:" + page);
-            if (page == 'menuPage'){//are you on the 'root page' from which phonegap will exit?
-                e.preventDefault();
-                $.mobile.changePage('#aboutToExitAppPage');
-            } else {
-                window.history.back();//restore normal back button functionality
-            }
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        // Empty
+    }
+
+    // alert dialog dismissed
+        function alertDismissed() {
+            // do something
         }
 
+    // Show a custom alertDismissed
+    //
+    function showAlert() {
+        navigator.notification.alert(
+            'You are the winner!',  // message
+            alertDismissed,         // callback
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
+    }
 
-//somewhere else in your code for the "aboutToExit app" page
-        $('#aboutToExitAppPage').on('pageinit', function(){
-            $(this).find('#exitApp').on('click', function(){
-                navigator.app.exitApp();//quit the app.
-            });
-        });
-        </script>
-        
-       
-    </head>
-    <body>
-        <div data-role="page" id="aboutToExitAppPage">
-    <div data-role="header" id="" data-position="inline" data-backbtn="true" >
-        <h1>About to exit app</h1>
-    </div>
-    <div data-role="content" style="width:100%; height:100%; padding:0;">
-        <ul id="" data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b" data-role="fieldContain">
-            <input id="exitApp" class="" type="button" value="Exit" data-theme="">
-            <a href="#menuPage" data-role='button'>Main Menu</a>
-        </ul>
-    </div>
-</div>
-    </body>
+    </script>
+  </head>
+  <body>
+    <p><a href="#" onclick="showAlert(); return false;">Show Alert</a></p>
+  </body>
 </html>
