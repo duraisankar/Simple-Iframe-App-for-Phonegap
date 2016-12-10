@@ -4,37 +4,41 @@
         <title>Test Layout</title>
         <script type="text/javascript" charset="utf-8">
             
-           function showConfirm() {
-        navigator.notification.confirm(
-            'Do you really want to exit?',  // message
-            exitFromApp,              // callback to invoke with index of button pressed
-            'Exit',            // title
-            'Cancel,OK'         // buttonLabels
-        );
-    }
+           document.addEventListener("backbutton", onBackKeyDown, false);//hijack the backbutton
 
-    
-    function exitFromApp(buttonIndex) {
-      if (buttonIndex==2){
-       navigator.app.exitApp();
-    	}
+        function onBackKeyDown(e){
+            var page = $.mobile.activePage.attr('id');
+            xStat.rec("back button clicked from page:" + page);
+            if (page == 'menuPage'){//are you on the 'root page' from which phonegap will exit?
+                e.preventDefault();
+                $.mobile.changePage('#aboutToExitAppPage');
+            } else {
+                window.history.back();//restore normal back button functionality
+            }
+        }
+
+
+//somewhere else in your code for the "aboutToExit app" page
+        $('#aboutToExitAppPage').on('pageinit', function(){
+            $(this).find('#exitApp').on('click', function(){
+                navigator.app.exitApp();//quit the app.
+            });
+        });
         </script>
-        <style type="text/css">
-            body, html
-            {
-                margin: 0; padding: 0; height: 100%; overflow: hidden;
-            }
-
-            #content
-            {
-                position:absolute; left: 0; right: 0; bottom: 0; top: 0px; 
-            }
-        </style>
+        
        
     </head>
     <body>
-        <div id="content">
-            <a onclick="showConfirm(); return false;" data-icon="delete" data-iconpos="notext" class="ui-btn-right"></a>
-        </div>
+        <div data-role="page" id="aboutToExitAppPage">
+    <div data-role="header" id="" data-position="inline" data-backbtn="true" >
+        <h1>About to exit app</h1>
+    </div>
+    <div data-role="content" style="width:100%; height:100%; padding:0;">
+        <ul id="" data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b" data-role="fieldContain">
+            <input id="exitApp" class="" type="button" value="Exit" data-theme="">
+            <a href="#menuPage" data-role='button'>Main Menu</a>
+        </ul>
+    </div>
+</div>
     </body>
 </html>
