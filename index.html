@@ -1,39 +1,26 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script> 
         <title>Test Layout</title>
         <script type="text/javascript" charset="utf-8">
             
-          document.addEventListener("offline", onOffline, false);
+    function onDeviceReady() {
+    setTimeout(function(){
+        document.addEventListener("backbutton", onBackKeyDown, false); //Listen to the User clicking on the back button
+    },500);
+}
             
-            document.addEventListener("online", onOnline, false);
-
-function onOnline() {
-    console.log("connection");
-    alert("connected");
+            $(document).ready(function(){
+    setTimeout(function(){
+        document.addEventListener('backbutton', function(e){    
+            if (confirm("Are you sure you want to exit app?"))
+            {
+                navigator.app.exitApp();
+            }   
+        }, false);
+    }, 500);
 }
-            function onOffline() {
-    // Handle the offline event
-    console.log("lost connection");
-                alert("lost connection"):
-}
-            function checkConnection() {
-    var networkState = navigator.connection.type;
-
-    var states = {};
-    states[Connection.UNKNOWN]  = 'Unknown connection';
-    states[Connection.ETHERNET] = 'Ethernet connection';
-    states[Connection.WIFI]     = 'WiFi connection';
-    states[Connection.CELL_2G]  = 'Cell 2G connection';
-    states[Connection.CELL_3G]  = 'Cell 3G connection';
-    states[Connection.CELL_4G]  = 'Cell 4G connection';
-    states[Connection.CELL]     = 'Cell generic connection';
-    states[Connection.NONE]     = 'No network connection';
-
-    alert('Connection type: ' + states[networkState]);
-}
-
-checkConnection();
         </script>
         <style type="text/css">
             body, html
