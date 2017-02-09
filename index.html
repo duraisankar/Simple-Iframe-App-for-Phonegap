@@ -2,90 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <script type="text/javascript" charset="utf-8" src="cordova.js"></script> 
-        <title>Test Layout</title>
-        <script type="text/javascript" charset="utf-8">
-            
-    /*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
-var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-		
-		window.plugins.PushbotsPlugin.initialize("5885a2174a9efaea9d8b456b", {"android":{"sender_id":"74683140477"}});
-		
-	
-
-// Only with First time registration
-// This will be called on token registration/refresh with Android and with every runtime with iOS
-window.plugins.PushbotsPlugin.on("registered", function(token){
-    console.log("Registration Id:" + token);
-});
-
-//Get user registrationId/token and userId on PushBots
-window.plugins.PushbotsPlugin.on("user:ids", function(data){
-    console.log("user:ids" + JSON.stringify(data));
-});
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
-    }
-};
-
-        </script>
+        <title>Drestein Admin</title>
         <style type="text/css">
-            body, html
-            {
-                margin: 0; padding: 0; height: 100%; overflow: hidden;
-            }
-            #content
-            {
+            #content{
                 position:absolute; left: 0; right: 0; bottom: 0; top: 0px; 
+                 background:url(loading.gif) center center no-repeat;
             }
         </style>
        
     </head>
     <body>
         <div id="content">
-            <iframe width="100%" height="100%" frameborder="0" src="http://phpdemo.16mb.com/inter.html" />
+            <iframe width="100%" height="100%" frameborder="0" src="http://drestein.in/adminapp"/>
         </div>
     </body>
 </html>
