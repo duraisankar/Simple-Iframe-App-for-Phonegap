@@ -9,9 +9,9 @@
     <name>Drestein Admin</name>
 
     <description>
-A event management app    </description>
+A Event Management App For Drestein '17   </description>
 
-    <author href="http://phonegap.com" email="support@phonegap.com">
+    <author href="http://drestein.in" email="support@phonegap.com">
        Durai Sankar
     </author>
         <splash src="splash.png" />
@@ -64,7 +64,7 @@ A event management app    </description>
     -->
 
     <!-- Define app icon for each platform. -->
-    <icon src="icon.png" />
+    <icon src="logo.png" />
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:qualifier="ldpi" />
     <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:qualifier="mdpi" />
     <icon src="res/icon/android/icon-72-hdpi.png"   gap:platform="android"    gap:qualifier="hdpi" />
