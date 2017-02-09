@@ -11,7 +11,7 @@
     <description>
 A Event Management App For Drestein '17   </description>
 
-    <author href="http://drestein.in" email="support@phonegap.com">
+    <author href="http://drestein.in" email="rduraisankar@gmail.com">
        Durai Sankar
     </author>
         <splash src="splash.png" />
@@ -21,9 +21,7 @@ A Event Management App For Drestein '17   </description>
         permission on your app, which PhoneGap requires.
     -->
         
-        <feature name="Notification">
-<param name="android-package" value="org.apache.cordova.dialogs.Notification" />
-</feature>
+        
 
     <preference name="permissions"                value="none"/>
 <preference name="StatusBarBackgroundColor" value="#333333" />
