@@ -27,7 +27,7 @@ kadibu tech    </author>
     <!-- <preference name="phonegap-version"       value="cli-6.0.0" /> -->
 
     
-
+<gap:plugin name = "org.apache.cordova.splashscreen" />
     <!-- Define app icon and splashscreen for each platform. -->
     <platform name="android">
         <icon   src="logo.png"/>
